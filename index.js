@@ -92,3 +92,19 @@ app.get("/movies/read/by-title", function(req, res) {
         })
     });
 });
+
+app.get("/movies/read/id/:id", function(req, res) {
+    var x = req.params.id;
+    if (x <= movies.length) {
+        res.send({ status: 200, data: movies[x] });
+
+    } else {
+        res.send({
+            status: 404,
+            error: true,
+            message: 'the movie  ' + x + ' does not exist '
+        });
+
+    }
+
+});
