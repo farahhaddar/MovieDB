@@ -2,11 +2,12 @@ const express = require('express');
 const port = 3000;
 const app = express();
 var d = new Date();
+
 app.listen(port, function() {
     console.log("Server is running on " + port + " port");
 });
 app.get('/', function(req, res) {
-    res.send('ok')
+    res.send('ok');
 });
 app.get("/test", function(req, res) {
     res.send({ status: 200, message: "ok" });
@@ -64,3 +65,30 @@ app.get("/movies/get", function(req, res) {
 app.get("/movies/edit", function(req, res) { res.send({ status: 200, message: "Hello" }); });
 
 app.get("/movies/delete", function(req, res) { res.send({ status: 200, message: "Hello" }); });
+
+
+app.get("/movies/read/by-date", function(req, res) {
+    res.send({
+        status: 200,
+        data: movies.sort(function(a, b) {
+            return a.year - b.year;
+        })
+    });
+});
+
+app.get("/movies/read/by-rating", function(req, res) {
+    res.send({
+        status: 200,
+        data: movies.sort(function(a, b) {
+            return b.rating - a.rating;
+        })
+    });
+});
+app.get("/movies/read/by-title", function(req, res) {
+    res.send({
+        status: 200,
+        data: movies.sort(function(a, b) {
+            return a.title.localeCompare(b.title);
+        })
+    });
+});
