@@ -1,31 +1,31 @@
 {
-    "name": "moviedb",
-    "version": "1.0.0",
-    "description": "or CMDB for short",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/farahhaddar/MovieDB.git"
-    },
-    "author": "Jeff Kinney",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/farahhaddar/MovieDB/issues"
-    },
-    "homepage": "https://github.com/farahhaddar/MovieDB#readme",
-    "keywords": [
-        "horror",
-        "action",
-        "drama"
-    ],
-    "dependencies": {
-        "express": "^4.17.1"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.6"
-    }
+  "name": "moviedb",
+  "version": "1.0.0",
+  "description": "or CMDB for short",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farahhaddar/MovieDB.git"
+  },
+  "author": "Jeff Kinney",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farahhaddar/MovieDB/issues"
+  },
+  "homepage": "https://github.com/farahhaddar/MovieDB#readme",
+  "keywords": [
+    "horror",
+    "action",
+    "drama"
+  ],
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }
