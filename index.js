@@ -1,6 +1,8 @@
+// step 2
 const express = require('express');
 const port = 3000;
 const app = express();
+// step 3 var 
 var d = new Date();
 
 app.listen(port, function() {
@@ -9,12 +11,19 @@ app.listen(port, function() {
 app.get('/', function(req, res) {
     res.send('ok');
 });
+// end of step 2
+
+// step 3
 app.get("/test", function(req, res) {
     res.send({ status: 200, message: "ok" });
 });
 app.get("/time", function(req, res) {
     res.send({ status: 200, message: d.getHours() + ":" + d.getSeconds() });
 });
+// end of step 3 
+
+//step 4
+// hello parameter
 app.get('/hello/:id', function(req, res) {
     res.send({
         status: 200,
@@ -22,9 +31,11 @@ app.get('/hello/:id', function(req, res) {
             req.params.id
     });
 });
+//hello 
 app.get('/hello', function(req, res) {
     res.send({ status: 200, message: "Hello" });
 });
+//search quary
 app.get('/search', (req, res) => {
     const search = req.query.s;
 
@@ -49,23 +60,74 @@ app.get('/search', (req, res) => {
         res.send(response);
     }
 });
+
+// end of step 4
+
+//step 5 
+// array
 const movies = [
     { title: "Jaws", year: 1975, rating: 8 },
     { title: "Avatar", year: 2009, rating: 7.8 },
     { title: "Brazil", year: 1985, rating: 8 },
     { title: "الإرهاب والكباب‎", year: 1992, rating: 6.2 },
 ];
-app.get("/movies/add", function(req, res) { res.send({ status: 200, message: "Hello" }); });
 
+//create function  step 8 updated 
+app.get("/movies/add", function(req, res) {
+    let movieTitle = req.query.title;
+    let movieYear = req.query.year;
+    let movieRating = req.query.rating;
+
+
+    if (movieTitle == null || isNaN(movieYear) || typeof movieYear === "undefined" || movieYear.toString().length != 4) {
+        res.send({
+            status: 403,
+            error: true,
+            message: 'you cannot create a movie without providing a title and a year'
+        });
+
+
+    } else if (movieRating == " " || typeof movieRating === "undefined") {
+        var x = 4;
+
+        movies.push({
+            title: movieTitle,
+            year: movieYear,
+            rating: x,
+        });
+        res.send(movies);
+    } else {
+        movies.push({
+            title: movieTitle,
+            year: movieYear,
+            rating: movieRating
+        });
+        res.send({
+            status: 200,
+            data: movies
+        });
+    }
+});
+// end of create function 
+
+// read function 
 app.get("/movies/get", function(req, res) {
     res.send({ status: 200, data: movies });
 
 });
+// end of read function 
+
+//update function 
 
 app.get("/movies/edit", function(req, res) { res.send({ status: 200, message: "Hello" }); });
+// end of update function 
 
+//delete fn 
 app.get("/movies/delete", function(req, res) { res.send({ status: 200, message: "Hello" }); });
+//end of delete fn 
+//end of step 5
 
+// start of step 6 
 
 app.get("/movies/read/by-date", function(req, res) {
     res.send({
@@ -92,7 +154,9 @@ app.get("/movies/read/by-title", function(req, res) {
         })
     });
 });
+// end of step 6 
 
+//start of step 7
 app.get("/movies/read/id/:id", function(req, res) {
     var x = req.params.id;
     if (x <= movies.length) {
@@ -108,3 +172,4 @@ app.get("/movies/read/id/:id", function(req, res) {
     }
 
 });
+//end of step 7
