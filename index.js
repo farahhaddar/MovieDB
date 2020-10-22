@@ -1,4 +1,5 @@
 // step 2
+const { response } = require('express');
 const express = require('express');
 const port = 3000;
 const app = express();
@@ -122,8 +123,23 @@ app.get("/movies/get", function(req, res) {
 app.get("/movies/edit", function(req, res) { res.send({ status: 200, message: "Hello" }); });
 // end of update function 
 
-//delete fn 
-app.get("/movies/delete", function(req, res) { res.send({ status: 200, message: "Hello" }); });
+//delete fn  updated to step 9 
+app.get('/movies/delete/:id', function(req, res) {
+    let x = req.params.id;
+    if (x >= movies.length || x < 0) {
+        res.send({
+            status: 404,
+            error: true,
+            message: 'the movie ' + x + 'does not exist '
+        })
+
+    } else {
+        let v = movies
+        v.splice(x, 1);
+        res.send(v);
+    }
+
+});
 //end of delete fn 
 //end of step 5
 
