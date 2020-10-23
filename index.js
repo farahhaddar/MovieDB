@@ -74,7 +74,7 @@ const movies = [
 ];
 
 //create function  step 8 updated 
-app.get("/movies/add", function(req, res) {
+app.post("/movies/add", function(req, res) {
     let movieTitle = req.query.title;
     let movieYear = req.query.year;
     let movieRating = req.query.rating;
@@ -120,7 +120,7 @@ app.get("/movies/get", function(req, res) {
 
 //update function  step 10 updated 
 
-app.get("/movies/edit/:id", function(req, res) {
+app.put("/movies/edit/:id", function(req, res) {
     let x = req.params.id;
     let t = req.query.title;
     let y = req.query.year;
@@ -143,7 +143,7 @@ app.get("/movies/edit/:id", function(req, res) {
 // end of update function 
 
 //delete fn  updated to step 9 
-app.get('/movies/delete/:id', function(req, res) {
+app.delete('/movies/delete/:id', function(req, res) {
     let x = req.params.id;
     if (x >= movies.length || x < 0) {
         res.send({
