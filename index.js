@@ -118,9 +118,28 @@ app.get("/movies/get", function(req, res) {
 });
 // end of read function 
 
-//update function 
+//update function  step 10 updated 
 
-app.get("/movies/edit", function(req, res) { res.send({ status: 200, message: "Hello" }); });
+app.get("/movies/edit/:id", function(req, res) {
+    let x = req.params.id;
+    let t = req.query.title;
+    let y = req.query.year;
+    let r = req.query.rating;
+
+    if (x < 0 || x >= movies.length) {
+        res.send('invalid id');
+    }
+    if (t != null) { movies[x].title = t; }
+    if (y != null) {
+        movies[x].year = y;
+    }
+    if (r != null) {
+        movies[x].rating = r;
+    }
+    res.send(movies);
+});
+
+
 // end of update function 
 
 //delete fn  updated to step 9 
